@@ -1,7 +1,7 @@
 {
   "name": "scrollbounce",
   "version": "0.0.2",
-  "description": "",
+  "description": "Add a subtle bounce effect on mobile when the user scrolls",
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

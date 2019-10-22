@@ -33,11 +33,13 @@ const rectCloseToViewport = ({ top, bottom }, { height: windowHeight }) => {
 const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
   const springSystem = new SpringSystem()
 
-  const children = [...document.querySelectorAll("[data-bounce-id]")]
+  const bounceChildren = Array.prototype.slice.call(
+    document.querySelectorAll("[data-bounce-id]")
+  )
 
   let offset = window.pageYOffset
 
-  const springs = children
+  const springs = bounceChildren
     .map(child => {
       const spring = springSystem.createSpring()
 
@@ -85,7 +87,7 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
       `[data-bounce-id="${cache.closestBounceId}"]`
     ])
 
-    const closestChildIndex = children.indexOf(closestChild)
+    const closestChildIndex = bounceChildren.indexOf(closestChild)
 
     const animatedChildrenDict = {}
 
@@ -96,7 +98,7 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
 
     if (scrollDown) {
       while (true) {
-        const el = children[animatedAboveIndex]
+        const el = bounceChildren[animatedAboveIndex]
         if (!el) break
         const bounding = el.getBoundingClientRect()
         const isAnimated = rectCloseToViewport(bounding, cache.viewportCoords)
@@ -106,7 +108,7 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
       }
     } else {
       while (true) {
-        const el = children[animatedBelowIndex]
+        const el = bounceChildren[animatedBelowIndex]
         if (!el) break
         const bounding = el.getBoundingClientRect()
         const isAnimated = rectCloseToViewport(bounding, cache.viewportCoords)
@@ -116,7 +118,7 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
       }
     }
 
-    const animatedChildren = children
+    const animatedChildren = bounceChildren
       .filter(c => {
         return animatedChildrenDict[c.dataset.bounceId]
       })
@@ -124,7 +126,7 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
         return [c, animatedChildrenDict[c.dataset.bounceId]]
       })
 
-    children
+    bounceChildren
       .filter(c => {
         return !animatedChildrenDict[c.dataset.bounceId]
       })
@@ -159,7 +161,7 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
 
     cache.viewportCoords = getViewportCoords()
 
-    const closestElTuple = children.reduce((acc, curr, i, source) => {
+    const closestElTuple = bounceChildren.reduce((acc, curr, i, source) => {
       if (acc.length && acc[0] !== source[i - 1]) return acc
       const bounding = curr.getBoundingClientRect()
       if (!rectInViewport(bounding, cache.viewportCoords)) return acc

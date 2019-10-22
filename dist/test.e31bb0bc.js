@@ -1621,14 +1621,6 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 var getViewportCoords = function getViewportCoords() {
   return {
     height: document.documentElement.clientHeight,
@@ -1664,11 +1656,9 @@ var initScrollBounce = function initScrollBounce() {
       effectMultiplier = _ref5$effectMultiplie === void 0 ? 2 : _ref5$effectMultiplie;
 
   var springSystem = new _rebound.SpringSystem();
-
-  var children = _toConsumableArray(document.querySelectorAll("[data-bounce-id]"));
-
+  var bounceChildren = Array.prototype.slice.call(document.querySelectorAll("[data-bounce-id]"));
   var offset = window.pageYOffset;
-  var springs = children.map(function (child) {
+  var springs = bounceChildren.map(function (child) {
     var spring = springSystem.createSpring();
     spring.addListener({
       onSpringUpdate: function onSpringUpdate(_spring) {
@@ -1708,7 +1698,7 @@ var initScrollBounce = function initScrollBounce() {
 
     var diff = offset - newOffset;
     var closestChild = document.querySelector(["[data-bounce-id=\"".concat(cache.closestBounceId, "\"]")]);
-    var closestChildIndex = children.indexOf(closestChild);
+    var closestChildIndex = bounceChildren.indexOf(closestChild);
     var animatedChildrenDict = {};
     var animatedAboveIndex = closestChildIndex - 1;
     var animatedBelowIndex = closestChildIndex + 1;
@@ -1716,7 +1706,7 @@ var initScrollBounce = function initScrollBounce() {
 
     if (scrollDown) {
       while (true) {
-        var el = children[animatedAboveIndex];
+        var el = bounceChildren[animatedAboveIndex];
         if (!el) break;
         var bounding = el.getBoundingClientRect();
         var isAnimated = rectCloseToViewport(bounding, cache.viewportCoords);
@@ -1726,7 +1716,7 @@ var initScrollBounce = function initScrollBounce() {
       }
     } else {
       while (true) {
-        var _el = children[animatedBelowIndex];
+        var _el = bounceChildren[animatedBelowIndex];
         if (!_el) break;
 
         var _bounding = _el.getBoundingClientRect();
@@ -1739,12 +1729,12 @@ var initScrollBounce = function initScrollBounce() {
       }
     }
 
-    var animatedChildren = children.filter(function (c) {
+    var animatedChildren = bounceChildren.filter(function (c) {
       return animatedChildrenDict[c.dataset.bounceId];
     }).map(function (c) {
       return [c, animatedChildrenDict[c.dataset.bounceId]];
     });
-    children.filter(function (c) {
+    bounceChildren.filter(function (c) {
       return !animatedChildrenDict[c.dataset.bounceId];
     }).forEach(function (c) {
       c.style.willChange = "";
@@ -1770,7 +1760,7 @@ var initScrollBounce = function initScrollBounce() {
     if (!scrollListener) scrollListener = window.addEventListener("scroll", onScroll);
     cache.clientY = event.targetTouches[0].clientY;
     cache.viewportCoords = getViewportCoords();
-    var closestElTuple = children.reduce(function (acc, curr, i, source) {
+    var closestElTuple = bounceChildren.reduce(function (acc, curr, i, source) {
       if (acc.length && acc[0] !== source[i - 1]) return acc;
       var bounding = curr.getBoundingClientRect();
       if (!rectInViewport(bounding, cache.viewportCoords)) return acc;

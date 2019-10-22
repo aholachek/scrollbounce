@@ -1,11 +1,11 @@
 # scrollbounce
+[![Minified & Gzipped size](https://badgen.net/bundlephobia/minzip/scrollbounce)](https://bundlephobia.com/result?p=scrollbounce)
+[![npm version](https://badgen.net/npm/v/scrollbounce)](https://npmjs.org/package/scrollbounce "View this project on npm")
+
 
 <a href="">
 <img src="./example.gif" alt="scroll example" height="300px">
 </a>
-
-[![Minified & Gzipped size](https://badgen.net/bundlephobia/minzip/scrollbounce)](https://bundlephobia.com/result?p=scrollbounce)
-[![npm version](https://badgen.net/npm/v/scrollbounce)](https://npmjs.org/package/scrollbounce "View this project on npm")
 
 ## Quickstart
 
