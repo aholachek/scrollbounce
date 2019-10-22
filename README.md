@@ -3,9 +3,12 @@
 [![npm version](https://badgen.net/npm/v/scrollbounce)](https://npmjs.org/package/scrollbounce "View this project on npm")
 
 
-<a href="">
+<a href="https://codesandbox.io/s/scrollbounce-demo-ofxn8">
 <img src="./example.gif" alt="scroll example" height="300px">
 </a>
+
+[View a live demo in Codesandbox](https://codesandbox.io/s/scrollbounce-demo-ofxn8)
+
 
 ## Quickstart
 
