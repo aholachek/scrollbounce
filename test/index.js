@@ -1,4 +1,4 @@
-import initScrollBounce from "../src/index"
+import initBounce from "../src/index"
 
 const ul = document.querySelector("ul")
 
@@ -8,4 +8,4 @@ const ul = document.querySelector("ul")
   ul.appendChild(li)
 })
 
-initScrollBounce(ul, { effectMultiplier: 1 })
+initBounce({ effectMultiplier: 3 })

@@ -30,10 +30,10 @@ const rectCloseToViewport = ({ top, bottom }, { height: windowHeight }) => {
   return top < windowHeight * 3 && bottom > -windowHeight * 2
 }
 
-const initScrollBounce = (el, { effectMultiplier = 2 } = {}) => {
+const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
   const springSystem = new SpringSystem()
 
-  const children = [...el.childNodes]
+  const children = [...document.querySelectorAll("[data-bounce-id]")]
 
   let offset = window.pageYOffset
 
@@ -81,7 +81,7 @@ const initScrollBounce = (el, { effectMultiplier = 2 } = {}) => {
     }
     const diff = offset - newOffset
 
-    const closestChild = el.querySelector([
+    const closestChild = document.querySelector([
       `[data-bounce-id="${cache.closestBounceId}"]`
     ])
 

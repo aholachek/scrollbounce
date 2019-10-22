@@ -9,7 +9,9 @@
   "scripts": {
     "test": "parcel test/index.html",
     "build": "microbundle",
-    "dev": "microbundle watch"
+    "dev": "microbundle watch",
+    "prepare": "yarn run build",
+    "postpublish": "git push origin --tags"
   },
   "author": "",
   "license": "ISC",
