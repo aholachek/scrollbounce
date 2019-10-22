@@ -31,7 +31,9 @@ or
 ### 2. Init the animation:
 
 ```js
-const unlisten = initScrollBounce()
+import initBounce from 'scrollbounce'
+
+const unlisten = initBounce()
 
 // if you want to remove the effect later:
 unlisten()
