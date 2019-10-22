@@ -7,7 +7,7 @@
 <img src="./example.gif" alt="scroll example" height="300px">
 </a>
 
-[➡ Live demo in CodeSandbox](https://codesandbox.io/s/scrollbounce-demo-ofxn8)
+[➡ Live demo on CodeSandbox](https://codesandbox.io/s/scrollbounce-demo-ofxn8)
 
 
 ## Quickstart
@@ -31,12 +31,12 @@ or
 ### 2. Init the animation:
 
 ```js
-import initBounce from 'scrollbounce'
+import bounce from 'scrollbounce'
 
-const unlisten = initBounce()
+const stopBounce = bounce()
 
 // if you want to remove the effect later:
-unlisten()
+stopBounce()
 ```
 
 ## Options
@@ -44,7 +44,7 @@ unlisten()
 The default effect is pretty subtle. To crank it up you can pass in an `effectMultiplier` option.
 
 ```js
-initBounce({ effectMultiplier: 3 })
+bounce({ effectMultiplier: 3 })
 ```
 
 ## Coming soon
