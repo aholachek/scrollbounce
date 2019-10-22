@@ -7,7 +7,7 @@
 <img src="./example.gif" alt="scroll example" height="300px">
 </a>
 
-[Live demo in CodeSandbox](https://codesandbox.io/s/scrollbounce-demo-ofxn8)
+[Live demo in CodeSandbox ➡](https://codesandbox.io/s/scrollbounce-demo-ofxn8)
 
 
 ## Quickstart
