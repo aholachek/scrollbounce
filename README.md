@@ -44,7 +44,7 @@ unlisten()
 The default effect is pretty subtle. To crank it up you can pass in an `effectMultiplier` option.
 
 ```js
-initScrollBounce({ effectMultiplier: 3 })
+initBounce({ effectMultiplier: 3 })
 ```
 
 ## Coming soon
