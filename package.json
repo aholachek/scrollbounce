@@ -13,7 +13,7 @@
     "prepare": "yarn run build",
     "postpublish": "git push origin --tags"
   },
-  "author": "",
+  "author": "Alex Holachek",
   "license": "ISC",
   "dependencies": {
     "rebound": "^0.1.0"
