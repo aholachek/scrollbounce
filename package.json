@@ -1,0 +1,23 @@
+{
+  "name": "scrollbounce",
+  "version": "0.0.0",
+  "description": "",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "unpkg": "dist/index.umd.js",
+  "scripts": {
+    "test": "parcel test/index.html",
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rebound": "^0.1.0"
+  },
+  "devDependencies": {
+    "microbundle": "^0.11.0",
+    "parcel": "^1.12.4"
+  }
+}
