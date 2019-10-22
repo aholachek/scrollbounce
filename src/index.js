@@ -81,7 +81,12 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
     if (newOffset >= cache.scrollHeight - cache.viewportCoords.height) {
       return
     }
-    const diff = offset - newOffset
+
+    const scrollDiffLimit = 40
+    const diff = Math.max(
+      -scrollDiffLimit,
+      Math.min(offset - newOffset, scrollDiffLimit)
+    )
 
     const closestChild = document.querySelector([
       `[data-bounce-id="${cache.closestBounceId}"]`

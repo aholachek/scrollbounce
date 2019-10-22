@@ -1696,7 +1696,8 @@ var initScrollBounce = function initScrollBounce() {
       return;
     }
 
-    var diff = offset - newOffset;
+    var scrollDiffLimit = 40;
+    var diff = Math.max(-scrollDiffLimit, Math.min(offset - newOffset, scrollDiffLimit));
     var closestChild = document.querySelector(["[data-bounce-id=\"".concat(cache.closestBounceId, "\"]")]);
     var closestChildIndex = bounceChildren.indexOf(closestChild);
     var animatedChildrenDict = {};
