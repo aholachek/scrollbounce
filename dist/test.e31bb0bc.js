@@ -1656,7 +1656,7 @@ var initScrollBounce = function initScrollBounce() {
       effectMultiplier = _ref5$effectMultiplie === void 0 ? 2 : _ref5$effectMultiplie;
 
   var springSystem = new _rebound.SpringSystem();
-  var bounceChildren = Array.prototype.slice.call(document.querySelectorAll("[data-bounce-id]"));
+  var bounceChildren = Array.from(document.querySelectorAll("[data-bounce-id]"));
   var offset = window.pageYOffset;
   var springs = bounceChildren.map(function (child) {
     var spring = springSystem.createSpring();

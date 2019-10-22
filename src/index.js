@@ -33,7 +33,7 @@ const rectCloseToViewport = ({ top, bottom }, { height: windowHeight }) => {
 const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
   const springSystem = new SpringSystem()
 
-  const bounceChildren = Array.prototype.slice.call(
+  const bounceChildren = Array.from(
     document.querySelectorAll("[data-bounce-id]")
   )
 
