@@ -67,7 +67,6 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
   const getCenter = ({ top, height }) => top + height / 2
 
   const onScroll = () => {
-    console.log("scroll")
     const fastScroll = Math.abs(diff) > cache.viewportCoords.height
     if (fastScroll) return
 
