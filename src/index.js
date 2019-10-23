@@ -64,13 +64,10 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
 
   let cache = {}
 
-  const getCenter = bounding => {
-    return bounding.top + bounding.height / 2
-  }
+  const getCenter = ({ top, height }) => top + height / 2
 
   const onScroll = () => {
-    if (!cache.scrollHeight) cache.scrollHeight = getScrollHeight()
-
+    console.log("scroll")
     const fastScroll = Math.abs(diff) > cache.viewportCoords.height
     if (fastScroll) return
 
@@ -157,14 +154,12 @@ const initScrollBounce = ({ effectMultiplier = 2 } = {}) => {
     offset = newOffset
   }
 
-  let scrollListener = false
-
   const onTouchStart = event => {
-    if (!scrollListener)
-      scrollListener = window.addEventListener("scroll", onScroll)
+    window.addEventListener("scroll", onScroll)
     cache.clientY = event.targetTouches[0].clientY
 
     cache.viewportCoords = getViewportCoords()
+    cache.scrollHeight = getScrollHeight()
 
     const closestElTuple = bounceChildren.reduce((acc, curr, i, source) => {
       if (acc.length && acc[0] !== source[i - 1]) return acc

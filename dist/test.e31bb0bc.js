@@ -1681,12 +1681,14 @@ var initScrollBounce = function initScrollBounce() {
 
   var cache = {};
 
-  var getCenter = function getCenter(bounding) {
-    return bounding.top + bounding.height / 2;
+  var getCenter = function getCenter(_ref6) {
+    var top = _ref6.top,
+        height = _ref6.height;
+    return top + height / 2;
   };
 
   var onScroll = function onScroll() {
-    if (!cache.scrollHeight) cache.scrollHeight = getScrollHeight();
+    console.log("scroll");
     var fastScroll = Math.abs(diff) > cache.viewportCoords.height;
     if (fastScroll) return;
     var newOffset = window.pageYOffset;
@@ -1741,10 +1743,10 @@ var initScrollBounce = function initScrollBounce() {
       c.style.willChange = "";
       springs[c.dataset.bounceId].setEndValue(0);
     });
-    animatedChildren.forEach(function (_ref6) {
-      var _ref7 = _slicedToArray(_ref6, 2),
-          child = _ref7[0],
-          bounding = _ref7[1];
+    animatedChildren.forEach(function (_ref7) {
+      var _ref8 = _slicedToArray(_ref7, 2),
+          child = _ref8[0],
+          bounding = _ref8[1];
 
       child.style.willChange = "transform";
       var spring = springs[child.dataset.bounceId];
@@ -1755,12 +1757,11 @@ var initScrollBounce = function initScrollBounce() {
     offset = newOffset;
   };
 
-  var scrollListener = false;
-
   var onTouchStart = function onTouchStart(event) {
-    if (!scrollListener) scrollListener = window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll);
     cache.clientY = event.targetTouches[0].clientY;
     cache.viewportCoords = getViewportCoords();
+    cache.scrollHeight = getScrollHeight();
     var closestElTuple = bounceChildren.reduce(function (acc, curr, i, source) {
       if (acc.length && acc[0] !== source[i - 1]) return acc;
       var bounding = curr.getBoundingClientRect();
@@ -1851,7 +1852,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59267" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62948" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
